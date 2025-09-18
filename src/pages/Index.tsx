@@ -4,7 +4,7 @@ import { InteractiveMap } from '@/components/InteractiveMap';
 import { Footer } from '@/components/Footer';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Shield, Lock, Database, Eye } from 'lucide-react';
+import { Building, Lock, Database, Eye } from 'lucide-react';
 
 const Index = () => {
   return (
@@ -33,10 +33,10 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
             <Card className="property-card">
               <CardContent className="p-6 text-center">
-                <Shield className="w-8 h-8 text-accent mx-auto mb-3" />
-                <h3 className="font-semibold mb-2">FHE Encryption</h3>
+                <Building className="w-8 h-8 text-accent mx-auto mb-3" />
+                <h3 className="font-semibold mb-2">Property Registry</h3>
                 <p className="text-sm text-muted-foreground">
-                  Complete privacy with homomorphic encryption
+                  Secure property registration and management
                 </p>
               </CardContent>
             </Card>

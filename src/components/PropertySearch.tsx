@@ -1,9 +1,12 @@
 import { useState } from 'react';
-import { Search, MapPin, Lock, Eye, Calendar } from 'lucide-react';
+import { Search, MapPin, Lock, Eye, Calendar, Plus } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { PropertyRegistration } from './PropertyRegistration';
+import { usePropertyContract } from '@/hooks/useContract';
 
 interface Property {
   id: string;
@@ -49,6 +52,7 @@ export const PropertySearch = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<Property[]>([]);
   const [isSearching, setIsSearching] = useState(false);
+  const { isConnected } = usePropertyContract();
 
   const handleSearch = async () => {
     if (!searchTerm.trim()) return;
@@ -77,13 +81,20 @@ export const PropertySearch = () => {
 
   return (
     <div className="space-y-6 slide-up">
-      {/* Search Header */}
-      <div className="text-center space-y-2">
-        <h2 className="text-2xl font-semibold">Property Registry Search</h2>
-        <p className="text-muted-foreground">
-          Search encrypted property records with verified ownership
-        </p>
-      </div>
+      <Tabs defaultValue="search" className="w-full">
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="search">Search Properties</TabsTrigger>
+          <TabsTrigger value="register">Register Property</TabsTrigger>
+        </TabsList>
+        
+        <TabsContent value="search" className="space-y-6">
+          {/* Search Header */}
+          <div className="text-center space-y-2">
+            <h2 className="text-2xl font-semibold">Property Registry Search</h2>
+            <p className="text-muted-foreground">
+              Search encrypted property records with verified ownership
+            </p>
+          </div>
 
       {/* Search Input */}
       <div className="flex space-x-2 max-w-2xl mx-auto">
@@ -159,14 +170,20 @@ export const PropertySearch = () => {
         </div>
       )}
 
-      {/* No Results */}
-      {searchResults.length === 0 && searchTerm && !isSearching && (
-        <div className="text-center py-8">
-          <p className="text-muted-foreground">
-            No properties found for "{searchTerm}". Try a different search term.
-          </p>
-        </div>
-      )}
+          {/* No Results */}
+          {searchResults.length === 0 && searchTerm && !isSearching && (
+            <div className="text-center py-8">
+              <p className="text-muted-foreground">
+                No properties found for "{searchTerm}". Try a different search term.
+              </p>
+            </div>
+          )}
+        </TabsContent>
+        
+        <TabsContent value="register">
+          <PropertyRegistration />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };

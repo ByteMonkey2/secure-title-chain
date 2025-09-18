@@ -1,4 +1,4 @@
-import { Shield, Map, FileKey } from 'lucide-react';
+import { Building, Map, FileKey } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { WalletConnect } from './WalletConnect';
 import registryLogo from '@/assets/registry-logo.png';
@@ -38,8 +38,8 @@ export const Header = () => {
             Registry Search
           </Button>
           <Button variant="ghost" size="sm" className="text-primary-foreground hover:bg-primary-foreground/10">
-            <Shield className="w-4 h-4 mr-2" />
-            Verification
+            <Building className="w-4 h-4 mr-2" />
+            Registry
           </Button>
         </nav>
 

@@ -58,9 +58,9 @@ This guide provides step-by-step instructions for deploying the Secure Title Cha
 
    ```
    NEXT_PUBLIC_CHAIN_ID=11155111
-   NEXT_PUBLIC_RPC_URL=https://sepolia.infura.io/v3/b18fb7e6ca7045ac83c41157ab93f990
-   NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=2ec9743d0d0cd7fb94dee1a7e6d33475
-   NEXT_PUBLIC_INFURA_API_KEY=b18fb7e6ca7045ac83c41157ab93f990
+   NEXT_PUBLIC_RPC_URL=https://sepolia.infura.io/v3/YOUR_INFURA_KEY
+   NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=YOUR_WALLET_CONNECT_PROJECT_ID
+   NEXT_PUBLIC_INFURA_API_KEY=YOUR_INFURA_API_KEY
    ```
 
 5. **Deploy**
@@ -109,14 +109,14 @@ This guide provides step-by-step instructions for deploying the Secure Title Cha
 | Variable | Value | Description |
 |----------|-------|-------------|
 | `NEXT_PUBLIC_CHAIN_ID` | `11155111` | Sepolia testnet chain ID |
-| `NEXT_PUBLIC_RPC_URL` | `https://sepolia.infura.io/v3/b18fb7e6ca7045ac83c41157ab93f990` | RPC endpoint |
-| `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` | `2ec9743d0d0cd7fb94dee1a7e6d33475` | WalletConnect project ID |
+| `NEXT_PUBLIC_RPC_URL` | `https://sepolia.infura.io/v3/YOUR_INFURA_KEY` | RPC endpoint |
+| `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` | `YOUR_WALLET_CONNECT_PROJECT_ID` | WalletConnect project ID |
 
 ### Optional Variables
 
 | Variable | Value | Description |
 |----------|-------|-------------|
-| `NEXT_PUBLIC_INFURA_API_KEY` | `b18fb7e6ca7045ac83c41157ab93f990` | Infura API key |
+| `NEXT_PUBLIC_INFURA_API_KEY` | `YOUR_INFURA_API_KEY` | Infura API key |
 | `NEXT_PUBLIC_CONTRACT_ADDRESS` | `TBD` | Deployed contract address |
 | `NEXT_PUBLIC_VERIFIER_ADDRESS` | `TBD` | Verifier contract address |
 | `NEXT_PUBLIC_INSPECTOR_ADDRESS` | `TBD` | Inspector contract address |

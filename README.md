@@ -1,8 +1,8 @@
-# 🏛️ Secure Title Chain
+# 🏢 Secure Title Chain
 
-> **Revolutionary Property Registry with Complete Privacy**
+> **Next-Generation Property Registry with Advanced Privacy**
 
-A next-generation confidential land registry system powered by Fully Homomorphic Encryption (FHE) and blockchain technology. Secure Title Chain enables property owners to maintain complete privacy while ensuring verifiable ownership records and selective disclosure capabilities.
+A cutting-edge confidential land registry system powered by Fully Homomorphic Encryption (FHE) and blockchain technology. Secure Title Chain revolutionizes property ownership by enabling complete privacy while maintaining verifiable records and selective disclosure capabilities.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ByteMonkey2/secure-title-chain)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -12,23 +12,23 @@ A next-generation confidential land registry system powered by Fully Homomorphic
 
 ## ✨ Key Features
 
-### 🔐 **Privacy-First Architecture**
+### 🔒 **Advanced Privacy Technology**
 - **FHE Encryption**: Complete privacy with homomorphic encryption for sensitive property data
 - **Zero-Knowledge Proofs**: Verify ownership without revealing details
 - **Selective Disclosure**: Reveal data only when needed for transfers
 
-### 🏗️ **Blockchain Infrastructure**
+### ⛓️ **Blockchain Infrastructure**
 - **Immutable Records**: Tamper-proof ownership history stored on-chain
 - **Smart Contracts**: Automated property transfers and verification
 - **Multi-Chain Support**: Ethereum Sepolia testnet ready
 
-### 🎯 **User Experience**
+### 🎨 **User Experience**
 - **Interactive Map**: Visual property search and exploration
 - **Wallet Integration**: Connect with MetaMask, WalletConnect, and more
 - **Real-time Updates**: Live property status and transfer notifications
 - **Mobile Responsive**: Optimized for all devices
 
-### 🛡️ **Security & Compliance**
+### 📋 **Security & Compliance**
 - **Verified Access**: Only authorized parties can view sensitive information
 - **Audit Trail**: Complete transaction history with privacy preservation
 - **Regulatory Compliance**: Built-in compliance features for property law
@@ -115,9 +115,9 @@ cp .env.example .env.local
 4. Configure your environment variables in `.env.local`:
 ```env
 NEXT_PUBLIC_CHAIN_ID=11155111
-NEXT_PUBLIC_RPC_URL=https://sepolia.infura.io/v3/b18fb7e6ca7045ac83c41157ab93f990
-NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=2ec9743d0d0cd7fb94dee1a7e6d33475
-NEXT_PUBLIC_INFURA_API_KEY=b18fb7e6ca7045ac83c41157ab93f990
+NEXT_PUBLIC_RPC_URL=https://sepolia.infura.io/v3/YOUR_INFURA_KEY
+NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=YOUR_WALLET_CONNECT_PROJECT_ID
+NEXT_PUBLIC_INFURA_API_KEY=YOUR_INFURA_API_KEY
 ```
 
 5. Start the development server:
