@@ -1,4 +1,4 @@
-import { Shield, Lock, FileCheck } from 'lucide-react';
+import { Building, Lock, FileCheck } from 'lucide-react';
 
 export const Footer = () => {
   return (
@@ -8,8 +8,8 @@ export const Footer = () => {
           {/* Privacy & Security */}
           <div className="space-y-3">
             <div className="flex items-center space-x-2">
-              <Shield className="w-5 h-5 text-accent" />
-              <h3 className="font-medium">Privacy First</h3>
+              <Building className="w-5 h-5 text-accent" />
+              <h3 className="font-medium">Property Registry</h3>
             </div>
             <p className="text-sm text-muted-foreground">
               All property records are encrypted using Fully Homomorphic Encryption (FHE), 
