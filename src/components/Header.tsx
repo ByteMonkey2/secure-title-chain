@@ -1,11 +1,9 @@
-import { useState } from 'react';
-import { Wallet, Shield, Map, FileKey } from 'lucide-react';
+import { Shield, Map, FileKey } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { WalletConnect } from './WalletConnect';
 import registryLogo from '@/assets/registry-logo.png';
 
 export const Header = () => {
-  const [isWalletConnected, setIsWalletConnected] = useState(false);
 
   return (
     <header className="registry-header px-6 py-4 fade-in">
@@ -46,16 +44,7 @@ export const Header = () => {
         </nav>
 
         {/* Wallet Connection */}
-        <div className="flex items-center space-x-4">
-          <div className="encryption-badge">
-            <Shield className="w-3 h-3 mr-1" />
-            FHE Secured
-          </div>
-          <WalletConnect 
-            isConnected={isWalletConnected}
-            onConnectionChange={setIsWalletConnected}
-          />
-        </div>
+        <WalletConnect />
       </div>
     </header>
   );
