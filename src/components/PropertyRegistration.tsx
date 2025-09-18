@@ -41,6 +41,12 @@ export const PropertyRegistration = () => {
     }
 
     try {
+      // For demo purposes, simulate the registration process
+      setIsLoading(true);
+      
+      // Simulate encryption and registration delay
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
       const result = await registerProperty(
         formData.address,
         formData.description,
@@ -68,6 +74,8 @@ export const PropertyRegistration = () => {
         description: "Failed to register property. Please try again.",
         variant: "destructive"
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 

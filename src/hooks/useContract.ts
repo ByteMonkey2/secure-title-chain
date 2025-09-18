@@ -1,6 +1,19 @@
 import { useAccount, useWriteContract, useReadContract } from 'wagmi';
-import { useFHEVM } from '@fhevm/solidity';
 import { useState } from 'react';
+
+// Mock FHE implementation for development
+const useFHEVM = () => {
+  return {
+    encrypt32: async (value: number) => {
+      // Mock encryption - in production, this would use real FHE
+      return new Uint8Array(32).fill(value);
+    },
+    generateProof: async (encryptedData: Uint8Array) => {
+      // Mock proof generation
+      return new Uint8Array(64);
+    }
+  };
+};
 
 // Contract ABI for SecureTitleChain
 const CONTRACT_ABI = [
