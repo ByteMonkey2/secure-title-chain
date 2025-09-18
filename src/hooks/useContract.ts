@@ -1,19 +1,11 @@
 import { useAccount, useWriteContract, useReadContract } from 'wagmi';
 import { useState } from 'react';
-
-// Mock FHE implementation for development
-const useFHEVM = () => {
-  return {
-    encrypt32: async (value: number) => {
-      // Mock encryption - in production, this would use real FHE
-      return new Uint8Array(32).fill(value);
-    },
-    generateProof: async (encryptedData: Uint8Array) => {
-      // Mock proof generation
-      return new Uint8Array(64);
-    }
-  };
-};
+import { 
+  encryptPropertyValue, 
+  encryptPropertyArea, 
+  encryptYearBuilt, 
+  generateEncryptionProof 
+} from '@/lib/fhe-utils';
 
 // Contract ABI for SecureTitleChain
 const CONTRACT_ABI = [
@@ -71,9 +63,6 @@ export const usePropertyContract = () => {
   const { writeContract, isPending, error } = useWriteContract();
   const [isLoading, setIsLoading] = useState(false);
 
-  // FHEVM instance for encryption
-  const fhevm = useFHEVM();
-
   const registerProperty = async (
     propertyAddress: string,
     description: string,
@@ -81,19 +70,21 @@ export const usePropertyContract = () => {
     area: number,
     yearBuilt: number
   ) => {
-    if (!isConnected || !fhevm) {
-      throw new Error('Wallet not connected or FHEVM not available');
+    if (!isConnected) {
+      throw new Error('Wallet not connected');
     }
 
     setIsLoading(true);
     try {
       // Encrypt the sensitive data using FHE
-      const encryptedValue = await fhevm.encrypt32(value);
-      const encryptedArea = await fhevm.encrypt32(area);
-      const encryptedYearBuilt = await fhevm.encrypt32(yearBuilt);
+      const encryptedValue = await encryptPropertyValue(value);
+      const encryptedArea = await encryptPropertyArea(area);
+      const encryptedYearBuilt = await encryptYearBuilt(yearBuilt);
 
       // Generate proof for the encrypted data
-      const inputProof = await fhevm.generateProof(encryptedValue);
+      const inputProofValue = await generateEncryptionProof(encryptedValue);
+      const inputProofArea = await generateEncryptionProof(encryptedArea);
+      const inputProofYear = await generateEncryptionProof(encryptedYearBuilt);
 
       // Call the smart contract
       const result = await writeContract({
@@ -106,7 +97,9 @@ export const usePropertyContract = () => {
           encryptedValue,
           encryptedArea,
           encryptedYearBuilt,
-          inputProof
+          inputProofValue,
+          inputProofArea,
+          inputProofYear
         ]
       });
 
@@ -124,15 +117,15 @@ export const usePropertyContract = () => {
     to: string,
     transferValue: number
   ) => {
-    if (!isConnected || !fhevm) {
-      throw new Error('Wallet not connected or FHEVM not available');
+    if (!isConnected) {
+      throw new Error('Wallet not connected');
     }
 
     setIsLoading(true);
     try {
       // Encrypt the transfer value
-      const encryptedTransferValue = await fhevm.encrypt32(transferValue);
-      const inputProof = await fhevm.generateProof(encryptedTransferValue);
+      const encryptedTransferValue = await encryptPropertyValue(transferValue);
+      const inputProof = await generateEncryptionProof(encryptedTransferValue);
 
       // Call the smart contract
       const result = await writeContract({
